@@ -1,8 +1,10 @@
 import 'package:basic_ui/Stepper_example.dart';
 import 'package:basic_ui/date_picker.dart';
 import 'package:basic_ui/home_page.dart';
+import 'package:basic_ui/image_picker.dart';
 import 'package:basic_ui/time_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class BottomTabs extends StatefulWidget {
   const BottomTabs({super.key});
@@ -54,7 +56,7 @@ class _BottomTabsState extends State<BottomTabs> {
                 icon: Icon(Icons.account_box),
               ),
               Tab(
-                icon: Icon(Icons.directions_transit),
+                icon: Icon(Icons.camera_alt),
               ),
               Tab(
                 icon: Icon(Icons.directions_boat),
@@ -68,12 +70,7 @@ class _BottomTabsState extends State<BottomTabs> {
           const TimePicker(),
           const DatePickerPage(),
           const StepperPage(),
-          Container(
-            color: Colors.red.withOpacity(0.3),
-            child: const Center(
-              child: Text("Transit"),
-            ),
-          ),
+          const ImagePickerExample(),
           Container(
             color: Colors.blue.withOpacity(0.3),
             child: const Center(

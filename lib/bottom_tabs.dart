@@ -31,6 +31,12 @@ class _BottomTabsState extends State<BottomTabs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Basic UI'),
+        centerTitle: true,
+        elevation: 0.0,
+        backgroundColor: Colors.transparent,
+      ),
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
@@ -54,6 +60,62 @@ class _BottomTabsState extends State<BottomTabs> {
           ),
         ],
       ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            _builddrawer(),
+            _builtItem(
+                icon: Icons.home,
+                title: 'Home',
+                ontap: () {
+                  Navigator.pop(context);
+                }),
+            _builtItem(
+                icon: Icons.notifications_rounded,
+                title: 'Notification',
+                ontap: () => Navigator.pushNamed(context, "Notification")),
+            _builtItem(
+                icon: Icons.person,
+                title: "profile",
+                ontap: () => Navigator.pushNamed(context, 'profile')),
+            _builtItem(
+                icon: Icons.settings,
+                title: "Setting",
+                ontap: () => Navigator.pushNamed(context, 'Setting'))
+          ],
+        ),
+      ),
     );
   }
+}
+
+_builddrawer() {
+  return const DrawerHeader(
+      decoration: BoxDecoration(color: Color(0xff1d1e22)),
+      child: Column(
+        children: [
+          CircleAvatar(
+            backgroundImage: AssetImage(''),
+            radius: 40,
+          ),
+          SizedBox(height: 10),
+          Text(
+            'Sabin Dahal',
+            style: TextStyle(
+                color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
+          )
+        ],
+      ));
+}
+
+_builtItem(
+    {required IconData icon,
+    required String title,
+    required GestureTapCallback ontap}) {
+  return ListTile(
+    leading: Icon(icon),
+    title: Text(title),
+    onTap: ontap,
+    minLeadingWidth: 5,
+  );
 }

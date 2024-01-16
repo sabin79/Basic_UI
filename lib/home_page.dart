@@ -10,19 +10,64 @@ class BottomSheetPage extends StatefulWidget {
 class _BottomSheetPageState extends State<BottomSheetPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: MaterialButton(
+    return Column(
+      children: [
+        const SizedBox(
+          height: 50,
+        ),
+        Container(
+          child: Center(
+            child: MaterialButton(
+                onPressed: () {
+                  _displayBottomSheet(context);
+                },
+                height: 50,
+                minWidth: 200,
+                color: const Color(0xff1d1e22),
+                child: const Text('Bottom Sheet',
+                    style: TextStyle(color: Colors.white))),
+          ),
+        ),
+        const SizedBox(
+          height: 50,
+        ),
+        MaterialButton(
             onPressed: () {
-              _displayBottomSheet(context);
+              _openAnimatedDialog(context);
             },
             height: 50,
             minWidth: 200,
             color: const Color(0xff1d1e22),
-            child: const Text('Bottom Sheet',
+            child: const Text('Animation Dialog',
                 style: TextStyle(color: Colors.white))),
-      ),
+      ],
     );
+  }
+
+  void _openAnimatedDialog(BuildContext context) {
+    showGeneralDialog(
+        barrierDismissible: true,
+        barrierLabel: '',
+        transitionDuration: const Duration(milliseconds: 500),
+        context: context,
+        pageBuilder: (context, animation1, animation2) {
+          return Container();
+        },
+        transitionBuilder: (context, a1, a2, Widget) {
+          return ScaleTransition(
+            scale: Tween<double>(begin: 0.5, end: 3.0).animate(a1),
+            child: FadeTransition(
+              opacity: Tween<double>(begin: 0.5, end: 1.0).animate(a1),
+              child: AlertDialog(
+                title: const Text("Hello"),
+                content: const Text("I'm Sabin dahal"),
+                shape: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                    borderSide: BorderSide.none),
+              ),
+            ),
+          );
+        });
   }
 }
 

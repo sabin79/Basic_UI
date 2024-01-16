@@ -1,8 +1,8 @@
+import 'package:basic_ui/Stepper_example.dart';
 import 'package:basic_ui/date_picker.dart';
 import 'package:basic_ui/home_page.dart';
 import 'package:basic_ui/time_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class BottomTabs extends StatefulWidget {
   const BottomTabs({super.key});
@@ -51,7 +51,7 @@ class _BottomTabsState extends State<BottomTabs> {
                 icon: Icon(Icons.calendar_month_rounded),
               ),
               Tab(
-                icon: Icon(Icons.directions_railway_outlined),
+                icon: Icon(Icons.account_box),
               ),
               Tab(
                 icon: Icon(Icons.directions_transit),
@@ -67,12 +67,7 @@ class _BottomTabsState extends State<BottomTabs> {
           const BottomSheetPage(),
           const TimePicker(),
           const DatePickerPage(),
-          Container(
-            color: Colors.brown.withOpacity(0.3),
-            child: const Center(
-              child: Text("Railway"),
-            ),
-          ),
+          const StepperPage(),
           Container(
             color: Colors.red.withOpacity(0.3),
             child: const Center(

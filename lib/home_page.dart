@@ -8,6 +8,16 @@ class BottomSheetPage extends StatefulWidget {
 }
 
 class _BottomSheetPageState extends State<BottomSheetPage> {
+  String _dropdownvalue = '1';
+
+  final _items = [
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -40,6 +50,37 @@ class _BottomSheetPageState extends State<BottomSheetPage> {
             color: const Color(0xff1d1e22),
             child: const Text('Animation Dialog',
                 style: TextStyle(color: Colors.white))),
+        const SizedBox(
+          height: 40,
+        ),
+        Container(
+          height: 60,
+          width: 80,
+          decoration: BoxDecoration(
+              color: const Color(0xffebedfe),
+              borderRadius: BorderRadius.circular(18)),
+          child: Center(
+            child: DropdownButton(
+              items: _items.map((String item) {
+                return DropdownMenuItem(value: item, child: Text(item));
+              }).toList(),
+              onChanged: (String? newValue) {
+                setState(() {
+                  _dropdownvalue = newValue!;
+                });
+              },
+              value: _dropdownvalue,
+              borderRadius: BorderRadius.circular(18),
+              icon: const Icon(Icons.keyboard_arrow_down),
+              iconSize: 10,
+              style: const TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black),
+              underline: Container(),
+            ),
+          ),
+        )
       ],
     );
   }

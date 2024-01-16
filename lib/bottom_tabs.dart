@@ -1,4 +1,6 @@
+import 'package:basic_ui/date_picker.dart';
 import 'package:basic_ui/home_page.dart';
+import 'package:basic_ui/time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -43,10 +45,10 @@ class _BottomTabsState extends State<BottomTabs> {
                 icon: Icon(Icons.directions_bus),
               ),
               Tab(
-                icon: Icon(Icons.directions_bike),
+                icon: Icon(Icons.timer),
               ),
               Tab(
-                icon: Icon(Icons.directions_car),
+                icon: Icon(Icons.calendar_month_rounded),
               ),
               Tab(
                 icon: Icon(Icons.directions_railway_outlined),
@@ -62,22 +64,9 @@ class _BottomTabsState extends State<BottomTabs> {
           ),
         ),
         body: TabBarView(children: [
-          Container(
-            color: Colors.blue.withOpacity(0.4),
-            child: const Center(child: Text("Bus")),
-          ),
-          Container(
-            color: Colors.green.withOpacity(0.45),
-            child: const Center(
-              child: Text("Bicycle"),
-            ),
-          ),
-          Container(
-            color: Colors.purple.withOpacity(0.3),
-            child: const Center(
-              child: Text("Car"),
-            ),
-          ),
+          const BottomSheetPage(),
+          const TimePicker(),
+          const DatePickerPage(),
           Container(
             color: Colors.brown.withOpacity(0.3),
             child: const Center(

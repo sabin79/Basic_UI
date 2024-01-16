@@ -1,5 +1,6 @@
 import 'package:basic_ui/Stepper_example.dart';
 import 'package:basic_ui/date_picker.dart';
+import 'package:basic_ui/dismissiable_listview.dart';
 import 'package:basic_ui/home_page.dart';
 import 'package:basic_ui/image_picker.dart';
 import 'package:basic_ui/time_picker.dart';
@@ -59,24 +60,19 @@ class _BottomTabsState extends State<BottomTabs> {
                 icon: Icon(Icons.camera_alt),
               ),
               Tab(
-                icon: Icon(Icons.directions_boat),
+                icon: Icon(Icons.list_alt_rounded),
               ),
             ],
             isScrollable: true,
           ),
         ),
-        body: TabBarView(children: [
-          const BottomSheetPage(),
-          const TimePicker(),
-          const DatePickerPage(),
-          const StepperPage(),
-          const ImagePickerExample(),
-          Container(
-            color: Colors.blue.withOpacity(0.3),
-            child: const Center(
-              child: Text("boat"),
-            ),
-          ),
+        body: const TabBarView(children: [
+          BottomSheetPage(),
+          TimePicker(),
+          DatePickerPage(),
+          StepperPage(),
+          ImagePickerExample(),
+          DIsmissibleListviewPage(),
         ]),
 
         //    _pages[_selectedIndex],

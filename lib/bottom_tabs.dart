@@ -29,59 +29,125 @@ class _BottomTabsState extends State<BottomTabs> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Basic UI'),
-        centerTitle: true,
-        elevation: 0.0,
-        backgroundColor: Colors.transparent,
-      ),
-      body: _pages[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        onTap: (index) {
-          if (index >= 0 && index < _pages.length) {
-            setState(() {
-              _selectedIndex = index;
-            });
-          }
-        },
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.add_box_rounded), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.videocam_sharp), label: ''),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: '',
+    return DefaultTabController(
+      length: 6,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Basic UI'),
+          centerTitle: true,
+          elevation: 0.0,
+          backgroundColor: Colors.transparent,
+          bottom: const TabBar(
+            tabs: [
+              Tab(
+                icon: Icon(Icons.directions_bus),
+              ),
+              Tab(
+                icon: Icon(Icons.directions_bike),
+              ),
+              Tab(
+                icon: Icon(Icons.directions_car),
+              ),
+              Tab(
+                icon: Icon(Icons.directions_railway_outlined),
+              ),
+              Tab(
+                icon: Icon(Icons.directions_transit),
+              ),
+              Tab(
+                icon: Icon(Icons.directions_boat),
+              ),
+            ],
+            isScrollable: true,
           ),
-        ],
-      ),
-      drawer: Drawer(
-        child: ListView(
-          children: [
-            _builddrawer(),
-            _builtItem(
-                icon: Icons.home,
-                title: 'Home',
-                ontap: () {
-                  Navigator.pop(context);
-                }),
-            _builtItem(
-                icon: Icons.notifications_rounded,
-                title: 'Notification',
-                ontap: () => Navigator.pushNamed(context, "Notification")),
-            _builtItem(
-                icon: Icons.person,
-                title: "profile",
-                ontap: () => Navigator.pushNamed(context, 'profile')),
-            _builtItem(
-                icon: Icons.settings,
-                title: "Setting",
-                ontap: () => Navigator.pushNamed(context, 'Setting'))
+        ),
+        body: TabBarView(children: [
+          Container(
+            color: Colors.blue.withOpacity(0.4),
+            child: const Center(child: Text("Bus")),
+          ),
+          Container(
+            color: Colors.green.withOpacity(0.45),
+            child: const Center(
+              child: Text("Bicycle"),
+            ),
+          ),
+          Container(
+            color: Colors.purple.withOpacity(0.3),
+            child: const Center(
+              child: Text("Car"),
+            ),
+          ),
+          Container(
+            color: Colors.brown.withOpacity(0.3),
+            child: const Center(
+              child: Text("Railway"),
+            ),
+          ),
+          Container(
+            color: Colors.red.withOpacity(0.3),
+            child: const Center(
+              child: Text("Transit"),
+            ),
+          ),
+          Container(
+            color: Colors.blue.withOpacity(0.3),
+            child: const Center(
+              child: Text("boat"),
+            ),
+          ),
+        ]),
+
+        //    _pages[_selectedIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          onTap: (index) {
+            if (index >= 0 && index < _pages.length) {
+              setState(() {
+                _selectedIndex = index;
+              });
+            }
+          },
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
+            BottomNavigationBarItem(icon: Icon(Icons.search), label: ''),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.add_box_rounded), label: ''),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.videocam_sharp), label: ''),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: '',
+            ),
           ],
+        ),
+
+        drawer: Drawer(
+          child: ListView(
+            children: [
+              _builddrawer(),
+              _builtItem(
+                  icon: Icons.home,
+                  title: 'Home',
+                  ontap: () {
+                    Navigator.pop(context);
+                  }),
+              _builtItem(
+                  icon: Icons.notifications_rounded,
+                  title: 'Notification',
+                  ontap: () => Navigator.pushNamed(context, "Notification")),
+              _builtItem(
+                  icon: Icons.person,
+                  title: "profile",
+                  ontap: () => Navigator.pushNamed(context, 'profile')),
+              _builtItem(
+                  icon: Icons.settings,
+                  title: "Setting",
+                  ontap: () => Navigator.pushNamed(context, 'Setting'))
+            ],
+          ),
         ),
       ),
     );

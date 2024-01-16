@@ -31,6 +31,9 @@ class _BottomSheetPageState extends State<BottomSheetPage> {
                 onPressed: () {
                   _displayBottomSheet(context);
                 },
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
                 height: 50,
                 minWidth: 200,
                 color: const Color(0xff1d1e22),
@@ -45,9 +48,12 @@ class _BottomSheetPageState extends State<BottomSheetPage> {
             onPressed: () {
               _openAnimatedDialog(context);
             },
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30),
+            ),
             height: 50,
             minWidth: 200,
-            color: const Color(0xff1d1e22),
+            color: const Color(0xff1d1e22).withOpacity(1),
             child: const Text('Animation Dialog',
                 style: TextStyle(color: Colors.white))),
         const SizedBox(
@@ -60,24 +66,29 @@ class _BottomSheetPageState extends State<BottomSheetPage> {
               color: const Color(0xffebedfe),
               borderRadius: BorderRadius.circular(18)),
           child: Center(
-            child: DropdownButton(
-              items: _items.map((String item) {
-                return DropdownMenuItem(value: item, child: Text(item));
-              }).toList(),
-              onChanged: (String? newValue) {
-                setState(() {
-                  _dropdownvalue = newValue!;
-                });
-              },
-              value: _dropdownvalue,
-              borderRadius: BorderRadius.circular(18),
-              icon: const Icon(Icons.keyboard_arrow_down),
-              iconSize: 10,
-              style: const TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black),
-              underline: Container(),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(40),
+              ),
+              child: DropdownButton(
+                items: _items.map((String item) {
+                  return DropdownMenuItem(value: item, child: Text(item));
+                }).toList(),
+                onChanged: (String? newValue) {
+                  setState(() {
+                    _dropdownvalue = newValue!;
+                  });
+                },
+                value: _dropdownvalue,
+                borderRadius: BorderRadius.circular(18),
+                icon: const Icon(Icons.keyboard_arrow_down),
+                iconSize: 10,
+                style: const TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black),
+                underline: Container(),
+              ),
             ),
           ),
         )

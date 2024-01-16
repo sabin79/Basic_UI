@@ -1,3 +1,4 @@
+import 'package:basic_ui/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -11,9 +12,7 @@ class BottomTabs extends StatefulWidget {
 class _BottomTabsState extends State<BottomTabs> {
   int _selectedIndex = 0;
   final List<Widget> _pages = [
-    Container(
-      color: Colors.red,
-    ),
+    const BottomSheetPage(),
     Container(
       color: Colors.blue,
     ),
